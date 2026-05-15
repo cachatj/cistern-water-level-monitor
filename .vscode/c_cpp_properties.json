@@ -8,8 +8,8 @@
         {
             "name": "PlatformIO",
             "includePath": [
-                "/Users/jcachat/Documents/PlatformIO/Projects/cister-water-level-monitor/include",
-                "/Users/jcachat/Documents/PlatformIO/Projects/cister-water-level-monitor/src",
+                "/Users/jcachat/code_sandbox/cister-water-level-monitor/include",
+                "/Users/jcachat/code_sandbox/cister-water-level-monitor/src",
                 "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                 "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
                 "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/esp_additions/freertos",
@@ -244,8 +244,8 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "/Users/jcachat/Documents/PlatformIO/Projects/cister-water-level-monitor/include",
-                    "/Users/jcachat/Documents/PlatformIO/Projects/cister-water-level-monitor/src",
+                    "/Users/jcachat/code_sandbox/cister-water-level-monitor/include",
+                    "/Users/jcachat/code_sandbox/cister-water-level-monitor/src",
                     "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                     "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
                     "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/esp_additions/freertos",
