@@ -10,6 +10,7 @@
             "includePath": [
                 "/Users/jcachat/code_sandbox/cister-water-level-monitor/include",
                 "/Users/jcachat/code_sandbox/cister-water-level-monitor/src",
+                "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                 "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                 "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
                 "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/esp_additions/freertos",
@@ -235,7 +236,6 @@
                 "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/libraries/USB/src",
                 "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/libraries/Update/src",
                 "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/libraries/WebServer/src",
-                "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                 "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                 "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/libraries/WiFiProv/src",
                 "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
@@ -246,6 +246,7 @@
                 "path": [
                     "/Users/jcachat/code_sandbox/cister-water-level-monitor/include",
                     "/Users/jcachat/code_sandbox/cister-water-level-monitor/src",
+                    "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                     "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                     "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
                     "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/esp_additions/freertos",
@@ -471,7 +472,6 @@
                     "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/libraries/USB/src",
                     "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/libraries/Update/src",
                     "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/libraries/WebServer/src",
-                    "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                     "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                     "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/libraries/WiFiProv/src",
                     "/Users/jcachat/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
