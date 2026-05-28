@@ -1,0 +1,8 @@
+Attribute,ESP32 C/C++ Datatype,Downstream (DB) Type,Notes
+measured_on,uint32_t,DATETIME / TIMESTAMP,"Store this as a UNIX Epoch timestamp (seconds since Jan 1, 1970). It takes exactly 4 bytes of memory, avoids complex string parsing on the ESP32, and makes time-series graphing a breeze."
+water_surface_dist_cm,float,FLOAT,"Assuming you are using an ultrasonic (e.g., HC-SR04) or ToF sensor, it will likely return a decimal. Optimization: If you only need whole centimeters, use uint16_t to save memory."
+estimated_gallons,uint32_t (or float),INTEGER (or FLOAT),"Unless you need to track fractions of a gallon, a uint32_t (which holds up to 4.2 billion) is perfect and avoids floating-point math overhead."
+cistern_percentage,uint8_t (or float),INTEGER (or FLOAT),"If you only care about whole numbers (0-100%), use an unsigned 8-bit integer (uint8_t). It uses just 1 byte of memory. If you need 99.5%, stick to float."
+battery_percentage,uint8_t,INTEGER,A uint8_t is highly recommended here. Battery curves aren't precise enough to justify decimal percentages anyway.
+temp_c,float,FLOAT,A standard 32-bit float is best here to capture values like 23.4.
+rain_tips,uint16_t,INTEGER,"A uint16_t can count up to 65,535 bucket tips. Depending on your reset frequency (daily vs. annually), you might need a uint32_t to prevent overflow."

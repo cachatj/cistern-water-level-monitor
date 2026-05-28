@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../cistern-water-level-monitor-eink-display"
+		}
+	],
+	"settings": {
+		"editor.dragAndDrop": false,
+		"workbench.editor.splitOnDragAndDrop": false,
+		"explorer.enableDragAndDrop": false,
+		"notebook.dragAndDropEnabled": false,
+		"editor.dropIntoEditor.enabled": false
+	}
+}
