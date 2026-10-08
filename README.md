@@ -12,21 +12,21 @@ The project is split into two primary nodes:
 
 ### In Hand
 
-| Part                                                                          | Qty     | Role                                   | Notes                                                                                                                              |
-| ----------------------------------------------------------------------------- | ------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| ELEGOO ESP-32 Development Board (USB-C, CP2102)                               | 3       | Outdoor publisher (Node 1)             | 1 in use, 2 spares                                                                                                                 |
-| ELECROW CrowPanel ESP32 5.79" E-Paper HMI (272×792, SPI)                      | 1       | Indoor subscriber (Node 2)             | ESP32-S3, USB-C powered                                                                                                            |
-| ELEGOO 0.96" OLED (SSD1306, I2C, white)                                       | 3       | Bench-test debug display               | Not deployed outdoors (power draw)                                                                                                 |
-| JSN-SR04T-V3.0 Waterproof Ultrasonic Module (21–600 cm)                       | 2       | Distance to water surface              | 1 spare. ~21–25 cm blind zone. Run at 5 V.                                                                                         |
-| MISOL Tipping-Bucket Rain Gauge (weather station spare part)                  | 1       | Localized rainfall                     | Reed switch on an RJ11 plug; vendor spec 0.3 mm per tip                                                                            |
-| EverExceed 5W 5V USB Solar Panel (IP65, 9.8 ft cable, 360° bracket)           | 1       | Charging source                        | Security-camera panel; ends in a USB plug                                                                                          |
-| TP4056 Type-C Li-ion Charging Module **with protection** (5 V in, 1 A charge) | 5       | Charges the 18650 cells from the panel | 1 in use, 4 spares. B+/B− go to the cells; OUT+/OUT− carry battery voltage (3.0–4.2 V) through the protection circuit to the load. |
-| RTHIEAI IP67 Junction Box, 150×100×70 mm                                      | 1       | Enclosure                              | Hinged clear cover, mounting plate, wall brackets                                                                                  |
-| PIONFYNES PG7 Nylon Cable Glands (3–6.5 mm cable)                             | 20      | Cable entries                          | 3 needed: solar, ultrasonic probe, rain gauge                                                                                      |
-| EPLZON Solderable Mini Breadboard PCB, 2.0" × 1.5" (17 columns, rows A–J)     | 12      | Field junction board                   | One board holds the resistors and the shared 5V, 3V3 and GND connections (see Assembly). 11 spares.                                |
-| ESP32 30-pin screw-terminal adapter                                           | 1       | Holds the ESP32                        | Every pin has a screw terminal, so field wires clamp in without Dupont connectors                                                  |
-| DEYUE 1% Metal Film Resistor Kit, 0 Ω–1 MΩ                                    | 605 pcs | Dividers and pull-ups                  | Supplies the 1 kΩ, 2 kΩ, 10 kΩ, and 100 kΩ values used below                                                                       |
-| TODOELEC 360-pc Dupont Jumper Kit (M-F / M-M / F-F, 10/20/30 cm)              | 1       | Bench wiring                           |                                                                                                                                    |
+| Part                                                                          | Qty     | Role                                   | Notes                                                                                                                                                          |
+| ----------------------------------------------------------------------------- | ------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ELEGOO ESP-32 Development Board (USB-C, CP2102)                               | 3       | Outdoor publisher (Node 1)             | 1 in use, 2 spares                                                                                                                                             |
+| ELECROW CrowPanel ESP32 5.79" E-Paper HMI (272×792, SPI)                      | 1       | Indoor subscriber (Node 2)             | ESP32-S3, USB-C powered                                                                                                                                        |
+| ELEGOO 0.96" OLED (SSD1306, I2C, white)                                       | 3       | Bench-test debug display               | Not deployed outdoors (power draw)                                                                                                                             |
+| JSN-SR04T-V3.0 Waterproof Ultrasonic Module (21–600 cm)                       | 2       | Distance to water surface              | 1 spare. ~21–25 cm blind zone. Run at 5 V.                                                                                                                     |
+| MISOL Tipping-Bucket Rain Gauge (weather station spare part)                  | 1       | Localized rainfall                     | Reed switch on an RJ11 plug; vendor spec 0.3 mm per tip                                                                                                        |
+| EverExceed 5W 5V USB Solar Panel (IP65, 9.8 ft cable, 360° bracket)           | 1       | Charging source                        | Security-camera panel; ends in a USB plug                                                                                                                      |
+| TP4056 Type-C Li-ion Charging Module **with protection** (5 V in, 1 A charge) | 5       | Charges the 18650 cells from the panel | 1 in use, 4 spares. B+/B− go to the cells; OUT+/OUT− carry battery voltage (3.0–4.2 V) through the protection circuit to the load.                             |
+| RTHIEAI IP67 Junction Box, 150×100×70 mm                                      | 1       | Enclosure                              | Hinged clear cover, mounting plate, wall brackets                                                                                                              |
+| PIONFYNES PG7 Nylon Cable Glands (3–6.5 mm cable)                             | 20      | Cable entries                          | 3 needed: solar, ultrasonic probe, rain gauge                                                                                                                  |
+| EPLZON Solderable Mini Breadboard PCB, 2.0" × 1.5" (17 columns, rows A–J)     | 12      | Field junction board                   | One board holds the resistors and the shared 5V, 3V3 and GND connections (see Assembly). 11 spares.                                                            |
+| ESP32 30-pin screw-terminal adapter                                           | 1       | Holds the ESP32                        | Every pin has a labeled screw terminal, so field wires clamp in without Dupont connectors. Each block also has one unlabeled screw at the top. Leave it empty. |
+| DEYUE 1% Metal Film Resistor Kit, 0 Ω–1 MΩ                                    | 605 pcs | Dividers and pull-ups                  | Supplies the 1 kΩ, 2.2 kΩ, 10 kΩ, 22 kΩ, and 100 kΩ values used below. It has no 2 kΩ, so the 2 kΩ is made from 2.2 kΩ and 22 kΩ in parallel.                  |
+| TODOELEC 360-pc Dupont Jumper Kit (M-F / M-M / F-F, 10/20/30 cm)              | 1       | Bench wiring                           |                                                                                                                                                                |
 
 ### Ordered (Awaiting Delivery)
 
@@ -50,7 +50,7 @@ The project is split into two primary nodes:
 
 The earlier wiring schematics (`wiring schematic.jpeg`, `wiring schematic 2.jpeg`) are out of date on the points below.
 
-1.  **JSN-SR04T Echo needs a voltage divider.** Powered at 5 V, the Echo pin outputs 5 V pulses. ESP32 GPIOs are 3.3 V only. Echo now passes through a 1 kΩ / 2 kΩ divider (≈3.3 V) before D18 (GPIO 18). Trig can be driven directly from D5 (GPIO 5), because 3.3 V reads as HIGH.
+1.  **JSN-SR04T Echo needs a voltage divider.** Powered at 5 V, the Echo pin outputs 5 V pulses. ESP32 GPIOs are 3.3 V only. Echo now passes through a 1 kΩ / 2 kΩ divider (≈3.3 V) before D18 (GPIO 18). The kit has no 2 kΩ, so it is a 2.2 kΩ and a 22 kΩ in parallel (exactly 2.0 kΩ). A 2.2 kΩ alone would put about 3.44–3.57 V on the pin, too close to the ESP32's 3.6 V limit. Trig can be driven directly from D5 (GPIO 5), because 3.3 V reads as HIGH.
 2.  **The battery cannot feed the ESP32's VIN pin directly.** TP4056 OUT+ is the battery voltage (3.0–4.2 V), not 5 V. On the VIN pin it goes through the dev board's AMS1117 3.3 V regulator, which needs ~1 V of headroom, so the ESP32 browns out under Wi-Fi load. The JSN-SR04T on the same "5V" pin would also only see 3–4 V, where its range and reliability drop. Fix: a Pololu U3V16F5 boost regulator between TP4056 OUT+ and the 5 V rail. The 5 V rail then behaves the same in the field as it does on USB during bench testing.
 3.  **Solar input.** The EverExceed panel is a 5 V USB camera panel. Its plug will not pass through a PG7 gland, so cut it off, pass the cable through the gland, and solder it to TP4056 IN+/IN−. The 1N5819 diode has been removed (see above).
 4.  **Board layout.** The EPLZON boards are 2.0" × 1.5", so the single-board layout in the old schematic will not fit. The ESP32 stays on its screw-terminal adapter, and the TP4056 and U3V16F5 mount as modules. One EPLZON board becomes a junction board that holds the resistors and the shared 5V, 3V3 and GND connections (see Assembly).
@@ -61,12 +61,14 @@ The earlier wiring schematics (`wiring schematic.jpeg`, `wiring schematic 2.jpeg
 
 The wiring guides use the **board labels** printed next to each pin on the ELEGOO board (30-pin layout). On this board, D*n* is GPIO *n*: D18 is GPIO 18, D5 is GPIO 5, and so on. Firmware uses the GPIO number, for example `pinMode(18, INPUT)`.
 
-Side and position assume the board is held chip-side up with the antenna end at the top and USB-C at the bottom. L4 means the left row, 4th pin from the top.
+The screw-terminal adapter prints the same labels next to its terminals, in the same order. This was checked against a photo of the adapter. Each terminal block has one extra screw at the top with no label. Leave it empty.
+
+Position assumes the adapter is held with the antenna end at the top and USB-C at the bottom. It counts labeled terminals from the top, skipping the unlabeled screw. L4 means the left block, 4th labeled terminal (D34).
 
 | Board label | GPIO (in code) | Position | Connects to              | Notes                                                                              |
 | ----------- | -------------- | -------- | ------------------------ | ---------------------------------------------------------------------------------- |
 | D5          | 5              | R8       | JSN-SR04T Trig           | Direct connection. Use a 20 µs trigger pulse (not the HC-SR04's 10 µs).            |
-| D18         | 18             | R7       | JSN-SR04T Echo           | Through a 1 kΩ / 2 kΩ divider                                                      |
+| D18         | 18             | R7       | JSN-SR04T Echo           | Through a 1 kΩ / 2 kΩ divider (2 kΩ = 2.2 kΩ ∥ 22 kΩ)                              |
 | D27         | 27             | L10      | Rain gauge               | 10 kΩ pull-up to 3.3 V. RTC GPIO, so it can wake the board from deep sleep (ext0). |
 | D34         | 34             | L4       | Battery divider midpoint | Input-only, ADC1 (works while Wi-Fi is on)                                         |
 | D21         | 21             | R5       | OLED SDA                 | Bench only                                                                         |
@@ -93,7 +95,7 @@ Power the ESP32 from your computer over USB-C. Keep it on its screw-terminal ada
 **JSN-SR04T (Water Level):**
 *   5V → 5 V rail, GND → GND rail, Trig → **D5**
 *   Echo → 1 kΩ → junction → **D18**
-*   Junction → 2 kΩ → GND
+*   Junction → 2.2 kΩ → GND, plus a 22 kΩ from the junction to GND (in parallel, together 2.0 kΩ)
 
 **Rain Gauge:** Cut off the RJ11 plug. While tipping the bucket, use a multimeter on continuity to confirm which two conductors are the switch (normally the center pair).
 *   Switch wire A → GND
@@ -146,6 +148,7 @@ Sensor wiring is identical to the bench test.
 ## Setup & Deployment
 
 1.  **Bench Testing (Now, USB-Powered):**
+    *   Set the multimeter to continuity and check each terminal you will use (D5, D18, D27, D34, VIN, 3V3, GND) against its pin on the ESP32 itself. Each pair should beep.
     *   Build the bench-test wiring above.
     *   Verify JSN-SR04T distances against a tape measure (targets ≥25 cm away).
     *   Count rain-gauge tips by hand against the firmware count.
@@ -161,14 +164,15 @@ Sensor wiring is identical to the bench test.
     *   One EPLZON board is the junction board. On these boards, holes A–E in each numbered column are connected to each other, and so are holes F–J. Each 5-hole strip works as a small rail. Before soldering, check with continuity mode that two holes in the same strip beep.
     *   Hold the board component side up with column 1 on the left and row J at the top. Solder the resistors flat with their legs 4 holes apart:
 
-        | Part        | Holes     | Bands (1% metal film)          |
-        | ----------- | --------- | ------------------------------ |
-        | R1 · 1 kΩ   | 1A – 5A   | brown black black brown brown  |
-        | R2 · 2 kΩ   | 5B – 9B   | red black black brown brown    |
-        | R3 · 10 kΩ  | 13A – 17A | brown black black red brown    |
-        | R4 · 100 kΩ | 1J – 5J   | brown black black orange brown |
-        | R5 · 100 kΩ | 5I – 9I   | brown black black orange brown |
-        | Jumper wire | 9E – 9F   | Joins the two GND strips       |
+        | Part         | Holes     | Bands (1% metal film)          |
+        | ------------ | --------- | ------------------------------ |
+        | R1 · 1 kΩ    | 1A – 5A   | brown black black brown brown  |
+        | R2a · 2.2 kΩ | 5B – 9B   | red red black brown brown      |
+        | R2b · 22 kΩ  | 5C – 9C   | red red black red brown        |
+        | R3 · 10 kΩ   | 13A – 17A | brown black black red brown    |
+        | R4 · 100 kΩ  | 1J – 5J   | brown black black orange brown |
+        | R5 · 100 kΩ  | 5I – 9I   | brown black black orange brown |
+        | Jumper wire  | 9E – 9F   | Joins the two GND strips       |
 
     *   Solder the wires:
 
@@ -182,7 +186,7 @@ Sensor wiring is identical to the bench test.
         | GND     | 9H   | U3V16F5 GND                         |
         | GND     | 9G   | ESP32 GND terminal                  |
         | GND     | 9D   | JSN-SR04T GND                       |
-        | GND     | 9C   | Rain gauge wire A                   |
+        | GND     | 9A   | Rain gauge wire A                   |
         | B+      | 1H   | TP4056 B+ (second wire on that pad) |
         | Battery | 5G   | ESP32 D34 terminal                  |
         | Echo in | 1C   | JSN-SR04T Echo                      |
