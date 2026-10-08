@@ -1,12 +1,28 @@
 # Cistern Water Level Monitor
 
-This repository contains the firmware and hardware documentation for the "Cistern Water Level Monitor" project. This system utilizes a solar-powered outdoor ESP32 sensor node to track cistern water levels and localized rainfall. The data is transmitted to an indoor e-ink dashboard and integrates directly with Apple HomeKit/Google Home.
+This repository contains the firmware and hardware documentation for the "Cistern Water Level Monitor" project. This system utilizes a solar-powered outdoor ESP32 sensor node to track cistern water levels and localized rainfall. The data goes to an indoor e-ink dashboard. The dashboard joins the home Wi-Fi network and publishes the readings to Apple Home.
 
 ## System Architecture
 
 The project is split into two primary nodes:
-*   **Node 1 (Outdoor Publisher):** A solar-powered ELEGOO ESP32 that collects sensor data, implements deep sleep cycles for power efficiency, and publishes JSON payloads via Wi-Fi (HomeKit) or ESP-NOW (fallback). During bench testing, a 0.96" OLED shows live readings for debugging.
-*   **Node 2 (Indoor Subscriber):** An ELECROW CrowPanel 5.79" E-Ink Display (ESP32-S3) that acts as an asynchronous ESP-NOW receiver, parsing the JSON payloads and updating the UI dashboard.
+*   **Node 1 (Outdoor Publisher):** A solar-powered ELEGOO ESP32. It collects sensor data, spends most of its time in deep sleep to save power, and sends JSON payloads to Node 2 over **ESP-NOW only**. It never joins Wi-Fi, because connecting to a router on every wake would drain the battery, and a sleeping device can't answer HomeKit. During bench testing, a 0.96" OLED shows live readings for debugging.
+*   **Node 2 (Indoor Subscriber and Wi-Fi Bridge):** An ELECROW CrowPanel 5.79" E-Ink Display (ESP32-S3), powered over USB and always on. It receives Node 1's ESP-NOW payloads and updates the dashboard. It also stays joined to the home 2.4 GHz IoT Wi-Fi network and publishes the readings to Apple Home through HomeSpan.
+
+## Network Setup (Wi-Fi and ESP-NOW)
+
+Only the CrowPanel joins Wi-Fi. The outdoor node talks to it over ESP-NOW, a direct radio link that doesn't go through the router.
+
+1.  **2.4 GHz only:** ESP32 radios can't use 5 GHz. The IoT network must have a 2.4 GHz band. If the router uses one network name for both bands, that's fine.
+2.  **Fixed channel:** In the router, set the 2.4 GHz channel to **1, 6, or 11** instead of auto.
+    *   While the CrowPanel is joined to Wi-Fi, its radio stays on the router's channel.
+    *   ESP-NOW only works when the sender is on that same channel, so the outdoor node is set to it in firmware.
+    *   If a send fails, the outdoor node scans for the network to find its new channel. It does this without joining the network.
+3.  **CrowPanel MAC:** The CrowPanel prints its MAC address when it joins Wi-Fi. Enter that address in the outdoor node's firmware as its ESP-NOW peer.
+4.  **Credentials stay out of GitHub:** The network name, password, channel and CrowPanel MAC live in `include/secrets.h` in each repo.
+    *   That file is listed in `.gitignore`.
+    *   Commit a `secrets.example.h` with placeholder values instead.
+5.  **Reliable receiving:** On the CrowPanel, turn off Wi-Fi power saving with `WiFi.setSleep(false)`. Otherwise it can miss ESP-NOW packets. It runs on USB power, so the extra draw doesn't matter.
+6.  **Smart-home apps:** HomeSpan works with Apple Home only. Google Home support needs a different approach and is an open decision.
 
 ## Hardware Manifest
 
@@ -127,8 +143,7 @@ Sensor wiring is identical to the bench test.
 ## Software Requirements
 
 ### Outdoor Node (ESP32)
-*   **HomeSpan / ESP HomeKit SDK:** For native Apple HomeKit integration.
-*   **ESP-NOW:** For direct device-to-device communication without a router.
+*   **ESP-NOW (`esp_now.h`, `esp_wifi.h`):** Sends readings straight to the CrowPanel on the router's channel. The node never joins Wi-Fi.
 *   **ArduinoJSON:** For packing sensor data into a structured payload.
 *   **Adafruit_SSD1306 + Adafruit_GFX:** Bench-test OLED only.
 
@@ -144,6 +159,8 @@ Sensor wiring is identical to the bench test.
 *   **GxEPD2:** For driving the e-ink display.
 *   **Adafruit_GFX:** For drawing UI elements, shapes, and text.
 *   **ESP-NOW:** Asynchronous receiver callbacks.
+*   **WiFi (Arduino core):** Joins the home 2.4 GHz IoT network, with power saving off.
+*   **HomeSpan:** Publishes the readings to Apple Home. HomeKit has no water-level or rainfall sensor type, so how they appear in the Home app is still to be decided.
 
 ## Setup & Deployment
 
@@ -153,7 +170,11 @@ Sensor wiring is identical to the bench test.
     *   Verify JSN-SR04T distances against a tape measure (targets ≥25 cm away).
     *   Count rain-gauge tips by hand against the firmware count.
     *   Confirm the battery-divider stand-in reads <3.3 V at the junction before connecting D34.
-2.  **Firmware Flash:** Update the CrowPanel MAC address in the outdoor node's firmware to establish the ESP-NOW pairing.
+2.  **Network and ESP-NOW Link:** Follow the Network Setup section above.
+    *   Fix the router's 2.4 GHz channel.
+    *   Flash the CrowPanel so it joins Wi-Fi, and record the channel and MAC address it prints.
+    *   Put the channel and MAC in the outdoor node's `secrets.h`.
+    *   Confirm that ESP-NOW packets arrive.
 3.  **Power-Stage Bench Test (When Parts Arrive):** Check each item *before* connecting the ESP32:
     *   Holder leads read ≤4.2 V with both cells installed (confirms parallel wiring).
     *   Panel open-circuit voltage in full sun is ≤6.0 V (TP4056 absolute max is 6.5 V).
