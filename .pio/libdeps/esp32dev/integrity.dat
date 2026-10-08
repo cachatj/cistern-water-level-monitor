@@ -1,3 +1,4 @@
 paulstoffregen/OneWire@^2.3.8
+yoursunny/WifiEspNow@^0.0.20230713
 bblanchon/ArduinoJson@^7.0.4
-milesburton/DallasTemperature@^3.11.0
+homespan/HomeSpan@^2.1.8
